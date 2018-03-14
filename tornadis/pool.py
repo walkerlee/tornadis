@@ -49,8 +49,7 @@ class ClientPool(object):
         if self.autoclose and self.client_timeout > 0:
             every = int(self.client_timeout) * 100
             self.__autoclose_periodic = \
-                tornado.ioloop.PeriodicCallback(self._autoclose, every,
-                                                io_loop=self.__ioloop)
+                tornado.ioloop.PeriodicCallback(self._autoclose, every)
             self.__autoclose_periodic.start()
 
     def _get_client_from_pool_or_make_it(self):
